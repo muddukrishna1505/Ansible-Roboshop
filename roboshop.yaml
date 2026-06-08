@@ -17,5 +17,5 @@
       - "roboshop-{{ item }}"
       - roboshop-common
     loop: "{{ instances }}"
-    register: ec2-output
+    register: ec2_output
     when: action == "create"  
