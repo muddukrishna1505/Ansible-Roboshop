@@ -1,0 +1,25 @@
+- name: mongodb setup
+  hosts: mongodb
+  become: yes
+  tasks:
+  - name: copy mongodb repo
+    copy:
+      src: mongo.repo
+      dest: /etc/yum.repos.d/mongo.repo
+
+  - name: install mongodb server
+    package:
+      name: mongodb-org
+      state: present
+
+  - name: allow remote connection to update
+    replace:
+      path: /etc/mongod.conf
+      regexp: '127.0.0.1'
+      replace: '0.0.0.0'
+
+  - name: start the mongodb server
+    service:
+      name: mongodb
+      state: started
+      enabled: yes    
