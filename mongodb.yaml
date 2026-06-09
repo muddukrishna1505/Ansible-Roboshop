@@ -20,6 +20,6 @@
 
   - name: start the mongodb server
     service:
-      name: mongodb
+      name: mongod
       state: started
       enabled: yes    
