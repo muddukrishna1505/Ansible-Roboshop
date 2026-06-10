@@ -14,7 +14,7 @@
     service:
       name: rabbitmq-server
       state: started
-      enable: yes
+      enabled: yes
   - name: create roboshop user
     community.rabbitmq.rabbitmq_user:
       user: roboshop
